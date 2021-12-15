@@ -2,6 +2,7 @@ import { download } from "https://deno.land/x/download/mod.ts";
 import { VSCodeProductResponse } from "./models/vscode-product-response.ts";
 import { startKia } from "./utils/start-kia.ts";
 import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
+import { existsSync } from "https://deno.land/std@0.117.0/fs/mod.ts";
 
 /**
  * Example API Paths
@@ -25,6 +26,11 @@ export async function downloadVSCodeZip(
   file = "vscode.zip",
 ) {
   const kia = await startKia("Downloading vscode zip");
+
+  if (existsSync("vscode.zip")) {
+    kia.succeed(`VSCode zip already downloaded`);
+    return;
+  }
 
   const url =
     `https://update.code.visualstudio.com/api/update/win32-x64-${packageFormat}/stable/productCommit`;
