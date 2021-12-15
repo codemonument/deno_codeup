@@ -27,7 +27,13 @@ export async function cleanFolder(
       continue;
     }
 
-    await Deno.remove(entry.path, { recursive: true });
+    try {
+      await Deno.remove(entry.path, { recursive: true });
+    } catch (error) {
+      // if error is: File not found, then ignore it (since when we delete folders recursively, all following file paths in the list get invalid)
+      console.log(error);
+      continue;
+    }
   }
 
   await kia.succeed(`Deleted old vscode files`);
