@@ -4,6 +4,7 @@ import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
 import { cleanupUserTempDirs } from "./src/cleanup-user-temp-dirs.ts";
 import { downloadVSCodeZip } from "./src/download-vscode-zip.ts";
 import { startKia } from "./src/utils/start-kia.ts";
+import { cleanFolder, CleanFolderOptions } from "./src/clean-folder.ts";
 
 /**
  * IMPORTANT: This script assumes to be started inside an extracted vscode installation
@@ -15,6 +16,9 @@ try {
 
   await cleanupUserTempDirs();
   await downloadVSCodeZip();
+  await cleanFolder(".", {
+    ignore: ["data", "vscode.zip", ".gitkeep"],
+  });
 
   logger.info("VSCode Update finished successfully!");
 } catch (error) {
