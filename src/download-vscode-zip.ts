@@ -32,7 +32,7 @@ export async function downloadVSCodeZip(
 ) {
   const kia = await startKia("Downloading vscode zip");
 
-  if (existsSync("vscode.zip")) {
+  if (existsSync(file)) {
     kia.succeed(`VSCode zip already downloaded`);
     return;
   }
