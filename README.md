@@ -6,6 +6,12 @@ Language: Typescript
 Run via: deno / as portable cli 
 Command: wcvm
 
+## Repo Structure 
+
+- src - contains ts source files 
+- main.ts - contains the main entrypoint for this script 
+- playground - the current working directory for trying this script
+
 ## VSCode Update API 
 
 The update api for vscode has the following endpoints (inclomplete): 
@@ -25,3 +31,4 @@ https://github.com/microsoft/vscode/blob/640fa1af29d47b4d4fa09ff9b7c12521679ef63
 
 available versions of vscode: 
 https://code.visualstudio.com/Download
+
