@@ -16,28 +16,27 @@
  *   "supportsFastUpdate": true
  * }
  */
-export interface VSCodeProductResponse () {
-    
-    // contains download path for zip, or some form of installer
-    url: String;
+export interface VSCodeProductResponse {
+  // contains download path for zip, or some form of installer
+  url: string;
 
-    // contains version number as string
-    name: String;
+  // contains version number as string
+  name: string;
 
-    // git commit hash
-    version: String;
+  // git commit hash
+  version: string;
 
-    // also contains version number as string
-    productVersion: String;
+  // also contains version number as string
+  productVersion: string;
 
-    // probably the hash of the file from this.url
-    hash: String;
+  // probably the hash of the file from this.url
+  hash: string;
 
-    // probably the unix timestamp
-    timestamp: String;
+  // probably the unix timestamp
+  timestamp: string;
 
-    sha256hash: String;
+  sha256hash: string;
 
-    // use unknown
-    supportsFastUpdate: Boolean;
+  // use unknown
+  supportsFastUpdate: boolean;
 }
