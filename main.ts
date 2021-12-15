@@ -18,10 +18,10 @@ try {
     ignore: ["data", updateZip, ".gitkeep"],
   });
 
-  const kiaUnzip = await startKia(`Unzip ${updateZip}`);
+  // const kiaUnzip = await startKia(`Unzip ${updateZip}`);
   const result = await unZipFromFile(updateZip, ".");
   if (!result) throw new Error(`Zip Extraction failed!`);
-  await kiaUnzip.succeed(`Unzipped ${updateZip}`);
+  // await kiaUnzip.succeed(`Unzipped ${updateZip}`);
 
   const kiaZipDelete = await startKia(`Remove ${updateZip}`);
   await Deno.remove(updateZip);
