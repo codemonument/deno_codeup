@@ -1,0 +1,11 @@
+version = "0.3.2"
+
+# This loads the env file into the environment of bonnie and the executed child process 
+# You may need to use the following syntax to interpolate env vars in a bonnie command itself: 
+# scriptName.cmd = "command for script with %EXACT_ENV_VAR_NAME for evn var interpolation"
+# scriptName.env_vars = ["EXACT_ENV_VAR_NAME"]
+# see https://github.com/arctic-hen7/bonnie/wiki/Environment-Variables
+env_files = [".env"]
+
+[scripts]
+    start = "deno run --allow-read --allow-write --allow-net main.ts"
