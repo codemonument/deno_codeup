@@ -1,4 +1,3 @@
-import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
 import { cleanupUserTempDirs } from "./src/cleanup-user-temp-dirs.ts";
 import { downloadVSCodeZip } from "./src/download-vscode-zip.ts";
 import { startKia } from "./src/utils/start-kia.ts";
@@ -8,12 +7,10 @@ import { unZipFromFile } from "https://deno.land/x/zip@v1.1.0/mod.ts";
 /**
  * IMPORTANT: This script assumes to be started inside an extracted vscode installation
  */
-const logger = log.getLogger();
-
 const updateZip = "vscode-update.zip";
 
 try {
-  logger.info("Updating vscode...");
+  console.info("Updating vscode...");
 
   await cleanupUserTempDirs();
   await downloadVSCodeZip("archive", "./", updateZip);
@@ -29,7 +26,8 @@ try {
   await Deno.remove(updateZip);
   await kiaZipDelete.succeed(`Removed ${updateZip}`);
 
-  logger.info("VSCode Update finished successfully!");
+  console.info("VSCode Update finished successfully!");
 } catch (error) {
-  logger.error(error);
+  console.error(error);
+  Deno.exit();
 }
