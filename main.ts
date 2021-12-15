@@ -17,9 +17,7 @@ try {
   await cleanupUserTempDirs();
   await kiaCleanup.succeed("Cleaned temp files in user Data");
 
-  const kiaZipDownload = await startKia("Downloading vscode zip");
   await downloadVSCodeZip();
-  await kiaZipDownload.succeed(`Downloaded VSCode Zip`);
 
   logger.info("VSCode Update finished successfully!");
 } catch (error) {
