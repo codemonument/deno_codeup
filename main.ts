@@ -1,10 +1,8 @@
-import { emptyDir, ensureDir } from "https://deno.land/std@0.117.0/fs/mod.ts";
-import { join } from "https://deno.land/std@0.117.0/path/mod.ts";
 import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
 import { cleanupUserTempDirs } from "./src/cleanup-user-temp-dirs.ts";
 import { downloadVSCodeZip } from "./src/download-vscode-zip.ts";
 import { startKia } from "./src/utils/start-kia.ts";
-import { cleanFolder, CleanFolderOptions } from "./src/clean-folder.ts";
+import { cleanFolder } from "./src/clean-folder.ts";
 import { unZipFromFile } from "https://deno.land/x/zip@v1.1.0/mod.ts";
 
 /**
