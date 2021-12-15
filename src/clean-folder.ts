@@ -3,9 +3,8 @@ import { startKia } from "./utils/start-kia.ts";
 
 export interface CleanFolderOptions {
   // do not clean files or folders in this list
-  // will be checked with fsEntry.path.startsWith(ignoreEntry), therefore
-  // they can have the format of
-  // data/xxx.txt to ignore files or folders in greater depth
+  // will only go through one depth level,
+  // so ignore can only contain top level childs inside vscode installation folder
   ignore?: string[];
 }
 
@@ -17,7 +16,7 @@ export async function cleanFolder(
     "Delete old vscode files, but keeping user dir and new vscode zip",
   );
 
-  for await (const entry of walk(path)) {
+  for await (const entry of walk(path, { maxDepth: 1 })) {
     if (entry.path === ".") continue;
     if (
       ignore &&
