@@ -13,10 +13,7 @@ const logger = log.getLogger();
 try {
   logger.info("Updating vscode...");
 
-  const kiaCleanup = await startKia("Cleanup user temp dirs...");
   await cleanupUserTempDirs();
-  await kiaCleanup.succeed("Cleaned temp files in user Data");
-
   await downloadVSCodeZip();
 
   logger.info("VSCode Update finished successfully!");

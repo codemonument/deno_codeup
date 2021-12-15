@@ -1,12 +1,12 @@
-import { emptyDir, ensureDir } from "https://deno.land/std@0.117.0/fs/mod.ts";
+import { emptyDir } from "https://deno.land/std@0.117.0/fs/mod.ts";
 import { join } from "https://deno.land/std@0.117.0/path/mod.ts";
-import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
+import { startKia } from "./utils/start-kia.ts";
 
+// remove temp files from portable user data
+export async function cleanupUserTempDirs(cwd = Deno.cwd()): Promise<void[]> {
+  const kiaCleanup = await startKia("Cleanup user temp dirs...");
 
-
-export function cleanupUserTempDirs(cwd = Deno.cwd()): Promise<void[]> {
-    // remove temp files from portable user data
-const tempFolderRemovalPromises = [
+  const tempFolderRemovalPromises = [
     "Backups",
     "Cache",
     "CachedData",
@@ -17,5 +17,8 @@ const tempFolderRemovalPromises = [
     return emptyDir(path);
   });
 
-  return Promise.all(tempFolderRemovalPromises);
+  const result = await Promise.all(tempFolderRemovalPromises);
+  await kiaCleanup.succeed("Cleaned temp files in user Data");
+
+  return result;
 }
