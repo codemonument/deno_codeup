@@ -22,3 +22,6 @@ https://stackoverflow.com/questions/66644107/api-public-to-get-the-latest-and-st
 
 Usage in VSCode (probably update routine): 
 https://github.com/microsoft/vscode/blob/640fa1af29d47b4d4fa09ff9b7c12521679ef634/src/vs/platform/update/electron-main/abstractUpdateService.ts#L17
+
+available versions of vscode: 
+https://code.visualstudio.com/Download
