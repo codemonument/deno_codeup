@@ -4,6 +4,11 @@ import { startKia } from "./utils/start-kia.ts";
 import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
 import { existsSync } from "https://deno.land/std@0.117.0/fs/mod.ts";
 
+// TODO: pass options via this interface
+// export interface DownloadVSCodeZipOptions {
+
+// }
+
 /**
  * Example API Paths
  * https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/productCommit
