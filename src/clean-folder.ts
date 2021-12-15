@@ -27,7 +27,7 @@ export async function cleanFolder(
       continue;
     }
 
-    await Deno.remove(entry.path);
+    await Deno.remove(entry.path, { recursive: true });
   }
 
   await kia.succeed(`Deleted old vscode files`);
