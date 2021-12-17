@@ -15,3 +15,6 @@ env_files = [".env"]
         "deno run --allow-read --allow-write --allow-net --unstable --allow-run ../main.ts",
         "popd",
     ]
+
+    bundle  = "deno bundle --unstable main.ts dist/wcvm.js"
+    compile = "deno compile --unstable --target x86_64-pc-windows-msvc main.ts --allow-read --allow-write --allow-net --allow-run  -o dist/wcvm.exe"
