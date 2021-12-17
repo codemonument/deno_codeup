@@ -2,3 +2,4 @@ playground
 !playground/.gitkeep
 dist 
 !dist/.gitkeep
+.DS_Store
