@@ -16,5 +16,6 @@ env_files = [".env"]
         "popd",
     ]
 
+    build   = ["bonnie bundle", "bonnie compile"]
     bundle  = "deno bundle --unstable main.ts dist/portable-vscode-updater.js"
     compile = "deno compile --unstable --target x86_64-pc-windows-msvc --allow-read --allow-write --allow-net --allow-run -o dist/portable-vscode-updater main.ts "
