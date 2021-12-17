@@ -16,5 +16,5 @@ env_files = [".env"]
         "popd",
     ]
 
-    bundle  = "deno bundle --unstable main.ts dist/wcvm.js"
-    compile = "deno compile --unstable --target x86_64-pc-windows-msvc main.ts --allow-read --allow-write --allow-net --allow-run  -o dist/wcvm.exe"
+    bundle  = "deno bundle --unstable main.ts dist/portable-vscode-updater.js"
+    compile = "deno compile --unstable --target x86_64-pc-windows-msvc --allow-read --allow-write --allow-net --allow-run -o dist/portable-vscode-updater main.ts "
