@@ -6,6 +6,8 @@ import { decompress } from "https://deno.land/x/zip@v1.2.2/mod.ts";
 
 /**
  * IMPORTANT: This script assumes to be started inside an extracted vscode installation
+ *
+ * VERSION: 1.0.0
  */
 const updateZip = "vscode-update.zip";
 
