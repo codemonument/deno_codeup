@@ -17,7 +17,13 @@ try {
   await cleanupUserTempDirs();
   await downloadVSCodeZip("archive", "./", updateZip);
   await cleanFolder(".", {
-    ignore: ["data", updateZip, ".gitkeep"],
+    ignore: [
+      "data",
+      updateZip,
+      ".gitkeep",
+      "portable-vscode-updater.exe",
+      "wcvm.exe",
+    ],
   });
 
   const kiaUnzip = await startKia(`Unzip ${updateZip}`);
