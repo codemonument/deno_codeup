@@ -1,10 +1,10 @@
-# Windows (VS)Code Version Manager (wcvm)
+# VSCode Portable Manager (currently Windows only)
 
-A version manager for portable vscode installation on windows
+A manager for portable vscode installation on windows
 
 Language: Typescript 
 Run via: deno / as portable cli 
-Command: wcvm
+Command: portable-vscode-updater.exe
 
 ## Repo Structure 
 
