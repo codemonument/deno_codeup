@@ -1,10 +1,10 @@
-# VSCode Portable Manager (currently Windows only)
+# Portable VSCode Manager
 
-A manager for portable vscode installation on windows
+A manager for portable vscode installation currently Windows only
 
 Language: Typescript 
 Run via: deno / as portable cli 
-Command: portable-vscode-updater.exe
+Command (currently): portable-vscode-updater.exe
 
 ## Repo Structure 
 
