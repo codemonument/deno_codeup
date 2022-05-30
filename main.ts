@@ -2,7 +2,7 @@ import { cleanupUserTempDirs } from "./src/cleanup-user-temp-dirs.ts";
 import { downloadVSCodeZip } from "./src/download-vscode-zip.ts";
 import { startKia } from "./src/utils/start-kia.ts";
 import { cleanFolder } from "./src/clean-folder.ts";
-import { decompress } from "https://deno.land/x/zip@v1.2.2/mod.ts";
+import { decompress } from "https://deno.land/x/zip@v1.2.3/mod.ts";
 
 /**
  * IMPORTANT: This script assumes to be started inside an extracted vscode installation
