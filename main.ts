@@ -1,13 +1,12 @@
-import { cleanupUserTempDirs } from "./src/cleanup-user-temp-dirs.ts";
-import { downloadVSCodeZip } from "./src/download-vscode-zip.ts";
+import { cleanupUserTempDirs } from "./src/features/cleanup-user-temp-dirs.ts";
+import { downloadVSCodeZip } from "./src/features/download-vscode-zip.ts";
 import { startKia } from "./src/utils/start-kia.ts";
-import { cleanFolder } from "./src/clean-folder.ts";
+import { cleanFolder } from "./src/features/clean-folder.ts";
 import { decompress } from "./src/forks/zip@1.2.3/mod.ts";
-import { VERSION } from './VERSION.ts';
+import { VERSION } from "./VERSION.ts";
 
 /**
  * IMPORTANT: This script assumes to be started inside an extracted vscode installation
- *
  */
 const updateZip = "vscode-update.zip";
 
@@ -28,7 +27,7 @@ try {
   });
 
   const kiaUnzip = await startKia(`Unzip ${updateZip}`);
-  const result = await decompress(updateZip, ".", {overwrite: true});
+  const result = await decompress(updateZip, ".", { overwrite: true });
   if (result === false) throw new Error(`Zip Extraction failed!`);
   await kiaUnzip.succeed(`Unzipped ${updateZip}`);
 
