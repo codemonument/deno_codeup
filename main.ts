@@ -3,15 +3,16 @@ import { downloadVSCodeZip } from "./src/download-vscode-zip.ts";
 import { startKia } from "./src/utils/start-kia.ts";
 import { cleanFolder } from "./src/clean-folder.ts";
 import { decompress } from "./src/forks/zip@1.2.3/mod.ts";
+import { VERSION } from './VERSION.ts';
 
 /**
  * IMPORTANT: This script assumes to be started inside an extracted vscode installation
  *
- * VERSION: 1.0.0
  */
 const updateZip = "vscode-update.zip";
 
 try {
+  console.info(`Running portable-vscode-updater Version ${VERSION}`);
   console.info("Updating vscode...");
 
   await cleanupUserTempDirs();
