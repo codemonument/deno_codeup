@@ -32,3 +32,10 @@ https://github.com/microsoft/vscode/blob/640fa1af29d47b4d4fa09ff9b7c12521679ef63
 available versions of vscode: 
 https://code.visualstudio.com/Download
 
+## TODOs
+
+- Auto-detect vscode install for updating: 
+    1. Search arguments passed to the executable
+    2. Search in current working dir 
+    3. Add an env var VSCODE_INSTALL reading and update the install found at that location 
+
