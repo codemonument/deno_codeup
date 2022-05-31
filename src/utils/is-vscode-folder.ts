@@ -4,8 +4,17 @@ import { path } from "../deps/_path.std.ts";
 /**
  * @param path The path to check whether it is a vscode install folder or not.
  */
-export async function isVSCodeFolder(installDirPath: string): Promise<boolean> {
+export async function isVSCodeFolder(
+  installDirPath: string | undefined,
+): Promise<boolean> {
   try {
+    if (installDirPath === undefined) {
+      log.debug(
+        `[isVSCodeFolder] Got undefined as path to test. Returning false`,
+      );
+      return false;
+    }
+
     const absPath = path.resolve(installDirPath);
     const installDirStats = await Deno.stat(absPath);
 
