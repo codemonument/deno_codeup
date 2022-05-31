@@ -6,46 +6,51 @@ import { decompress } from "./src/forks/zip@1.2.3/mod.ts";
 import { VERSION } from "./VERSION.ts";
 import { parseCliArgs } from "./src/utils/parse-cli-args.ts";
 import { log } from "./src/deps/_log.std.ts";
-
-/**
- * IMPORTANT: This script assumes to be started inside an extracted vscode installation
- */
-const updateZip = "vscode-update.zip";
-const cliArgs = parseCliArgs(Deno.args);
-const installLocations = [
-  cliArgs.installLocation,
-  Deno.env.get("VSCODE_INSTALL"),
-  Deno.cwd(),
-];
-
-log.info(installLocations);
-
-Deno.exit();
+import { join } from "./src/deps/_path.std.ts";
+import { chooseValidVSCodeInstall } from "./src/features/choose-valid-vscode-install.ts";
 
 try {
   log.info(`Running portable-vscode-updater Version ${VERSION}`);
   log.info("Updating vscode...");
+  const cliArgs = parseCliArgs(Deno.args);
 
-  await cleanupUserTempDirs();
-  await downloadVSCodeZip("archive", "./", updateZip);
+  const workingVscodeDir = await chooseValidVSCodeInstall(
+    { type: "CLI_ARG", location: cliArgs.installLocation },
+    { type: "ENV_VSCODE_INSTALL", location: Deno.env.get("VSCODE_INSTALL") },
+    { type: "CWD", location: Deno.cwd() },
+  );
+
+  const updateZipName = "vscode-update.zip";
+  const updateZipPath = join(workingVscodeDir.location, updateZipName);
+
+  await cleanupUserTempDirs(workingVscodeDir);
+  await downloadVSCodeZip("archive", workingVscodeDir.location, updateZipName);
   await cleanFolder(".", {
     ignore: [
       "data",
-      updateZip,
+      updateZipName,
       ".gitkeep",
       "portable-vscode-updater.exe",
       "wcvm.exe",
     ],
   });
 
-  const kiaUnzip = await startKia(`Unzip ${updateZip}`);
-  const result = await decompress(updateZip, ".", { overwrite: true });
+  /**
+   * Unzip update zip
+   */
+  const kiaUnzip = await startKia(`Unzip ${updateZipPath}`);
+  const result = await decompress(updateZipPath, workingVscodeDir.location, {
+    overwrite: true,
+  });
   if (result === false) throw new Error(`Zip Extraction failed!`);
-  await kiaUnzip.succeed(`Unzipped ${updateZip}`);
+  await kiaUnzip.succeed(`Unzipped ${updateZipPath}`);
 
-  const kiaZipDelete = await startKia(`Remove ${updateZip}`);
-  await Deno.remove(updateZip);
-  await kiaZipDelete.succeed(`Removed ${updateZip}`);
+  /**
+   * Delete update zip
+   */
+  const kiaZipDelete = await startKia(`Remove ${updateZipPath}`);
+  await Deno.remove(updateZipPath);
+  await kiaZipDelete.succeed(`Removed ${updateZipPath}`);
 
   log.info("VSCode Update finished successfully!");
 } catch (error) {
