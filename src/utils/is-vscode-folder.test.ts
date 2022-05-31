@@ -1,4 +1,8 @@
-import { describe } from "../deps/_testing.std.ts";
+import { assertEquals, describe, it } from "../deps/_testing.std.ts";
+import { isVSCodeFolder } from "./is-vscode-folder.ts";
 
-describe(`is-vscode-folder`, () => {
+describe(`isVSCodeFolder`, () => {
+  it(`should return false for ./playground `, async () => {
+    assertEquals(await isVSCodeFolder("./dist"), false);
+  });
 });
