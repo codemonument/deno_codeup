@@ -40,7 +40,7 @@ const parser = args
       "A path to the install location of the vscode instance, which should be updated",
     default: undefined,
   }))
-  .sub("help", args.describe("Show help"));
+  .sub("help", args.describe("Shows this help text"));
 
 /**
  * @param args should normally contain Deno.args, but can also contain mocked data for testing
