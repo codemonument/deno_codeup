@@ -1,6 +1,6 @@
 import { emptyDir } from "https://deno.land/std@0.117.0/fs/mod.ts";
 import { join } from "https://deno.land/std@0.117.0/path/mod.ts";
-import { startKia } from "./utils/start-kia.ts";
+import { startKia } from "../utils/start-kia.ts";
 
 // remove temp files from portable user data
 export async function cleanupUserTempDirs(cwd = Deno.cwd()): Promise<void[]> {

@@ -1,5 +1,5 @@
 import { walk } from "https://deno.land/std@0.117.0/fs/mod.ts";
-import { startKia } from "./utils/start-kia.ts";
+import { startKia } from "../utils/start-kia.ts";
 
 export interface CleanFolderOptions {
   // do not clean files or folders in this list

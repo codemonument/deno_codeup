@@ -1,4 +1,4 @@
-import { Kia } from "https://deno.land/x/kia@v0.1.0/kia.ts";
+import { Kia } from "../deps/_kia.ts";
 
 export async function startKia(text: string): Promise<Kia> {
   const kia = new Kia(text);
