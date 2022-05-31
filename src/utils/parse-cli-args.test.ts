@@ -1,10 +1,19 @@
-import { assertThrows, describe, it } from "../deps/_testing.std.ts";
+import {
+  assertEquals,
+  assertThrows,
+  describe,
+  it,
+} from "../deps/_testing.std.ts";
 import { log } from "../deps/_log.std.ts";
 import { parseCliArgs } from "./parse-cli-args.ts";
 
 describe(`parse-cli-args`, () => {
-  it(`should exit with code 0 on --help`, async () => {
+  it(`on --help arg: showHelp & exit(0)`, async () => {
     await assertThrows(() => parseCliArgs(["--help"]));
+  });
+
+  it(`on help cmd: showHelp & exit(0)`, async () => {
+    await assertThrows(() => parseCliArgs(["help"]));
   });
 
   //   Cannot happen since i don't have any required args anymore
@@ -13,10 +22,9 @@ describe(`parse-cli-args`, () => {
   //   });
 
   it(`should run main command`, () => {
-    parseCliArgs([]);
-  });
-
-  it(`should run help command`, () => {
-    parseCliArgs(["help"]);
+    assertEquals(parseCliArgs([]), {
+      safeExtract: false,
+      installLocation: undefined,
+    });
   });
 });

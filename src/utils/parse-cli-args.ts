@@ -8,6 +8,7 @@ import {
   Text,
 } from "../deps/_args.ts";
 import { log } from "../deps/_log.std.ts";
+import { CliArgs } from "./cli-args.ts";
 
 function showHelp(cmdPath: readonly string[] = []) {
   if (!cmdPath.length) {
@@ -44,7 +45,7 @@ const parser = args
 /**
  * @param args should normally contain Deno.args, but can also contain mocked data for testing
  */
-export function parseCliArgs(args: string[]) {
+export function parseCliArgs(args: string[]): CliArgs {
   const res = parser.parse(args);
 
   switch (res.tag) {
@@ -52,11 +53,16 @@ export function parseCliArgs(args: string[]) {
       console.error(res?.error?.toString());
       Deno.exit(1);
       break;
-    case MAIN_COMMAND:
-      console.log("no command", res.value);
-      break;
+    case MAIN_COMMAND: {
+      const { safeExtract, installLocation } = res.value;
+      return {
+        safeExtract,
+        installLocation,
+      };
+    }
     case "help":
       showHelp();
+      Deno.exit();
       break;
   }
 }
