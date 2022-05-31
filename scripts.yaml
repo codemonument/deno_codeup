@@ -17,6 +17,7 @@ scripts:
     cmd: deno test 
     allow: 
       read: true
+      write: true
   build: 
     - vr bundle 
     - vr compile
