@@ -59,10 +59,11 @@ export function parseCliArgs(args: string[]): CliArgs {
       Deno.exit(1);
       break;
     case MAIN_COMMAND: {
-      const { safeExtract, installLocation } = res.value;
+      const { safeExtract, installLocation, allowInstall } = res.value;
       return {
         safeExtract,
         installLocation,
+        allowInstall,
       };
     }
     case "help":

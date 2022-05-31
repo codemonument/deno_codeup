@@ -24,6 +24,7 @@ describe(`parse-cli-args`, () => {
   it(`should run main command`, () => {
     assertEquals(parseCliArgs([]), {
       safeExtract: false,
+      allowInstall: false,
       installLocation: undefined,
     });
   });
