@@ -4,15 +4,18 @@ import { startKia } from "./src/utils/start-kia.ts";
 import { cleanFolder } from "./src/features/clean-folder.ts";
 import { decompress } from "./src/forks/zip@1.2.3/mod.ts";
 import { VERSION } from "./VERSION.ts";
+import { parseCliArgs } from "./src/utils/parse-cli-args.ts";
+import { log } from "./src/deps/_log.std.ts";
 
 /**
  * IMPORTANT: This script assumes to be started inside an extracted vscode installation
  */
 const updateZip = "vscode-update.zip";
+const cliArgs = parseCliArgs(Deno.args);
 
 try {
-  console.info(`Running portable-vscode-updater Version ${VERSION}`);
-  console.info("Updating vscode...");
+  log.info(`Running portable-vscode-updater Version ${VERSION}`);
+  log.info("Updating vscode...");
 
   await cleanupUserTempDirs();
   await downloadVSCodeZip("archive", "./", updateZip);
@@ -35,8 +38,8 @@ try {
   await Deno.remove(updateZip);
   await kiaZipDelete.succeed(`Removed ${updateZip}`);
 
-  console.info("VSCode Update finished successfully!");
+  log.info("VSCode Update finished successfully!");
 } catch (error) {
-  console.error(error);
+  log.error(error);
   Deno.exit();
 }
