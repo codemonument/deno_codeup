@@ -34,10 +34,15 @@ const parser = args
       describe:
         "Do not override files while extracting the update-zip, if they exist already",
     }),
-  ).with(PartialOption("installLocation", {
+  ).with(Flag("allowInstall", {
+    alias: ["i"],
+    describe:
+      "Allows installation of vscode when 'installLocation' path dir is empty",
+  })).with(PartialOption("installLocation", {
     type: Text,
     describe:
-      "A path to the install location of the vscode instance, which should be updated",
+      `[Optional] A path to the install location of the vscode instance, which should be updated. 
+      Can also be set via VSCODE_INSTALL env or by running this cli inside a vscode directory`,
     default: undefined,
   }))
   .sub("help", args.describe("Shows this help text"));
