@@ -1,8 +1,7 @@
 import { download } from "https://deno.land/x/download/mod.ts";
-import { VSCodeProductResponse } from "./models/vscode-product-response.ts";
-import { startKia } from "./utils/start-kia.ts";
-import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
-import { existsSync } from "https://deno.land/std@0.117.0/fs/mod.ts";
+import { VSCodeProductResponse } from "../models/vscode-product-response.ts";
+import { startKia } from "../utils/start-kia.ts";
+import { log } from "../deps/_log.std.ts";
 
 // TODO: pass options via this interface
 // export interface DownloadVSCodeZipOptions {
@@ -32,7 +31,7 @@ export async function downloadVSCodeZip(
 ) {
   const kia = await startKia("Downloading vscode zip");
 
-  if (existsSync(file)) {
+  if (Deno.statSync(file)) {
     kia.succeed(`VSCode zip already downloaded`);
     return;
   }
