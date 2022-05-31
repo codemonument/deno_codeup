@@ -13,6 +13,10 @@ scripts:
       write: true
       net: true 
       run: true
+  test: 
+    cmd: deno test 
+    allow: 
+      read: true
   build: 
     - vr bundle 
     - vr compile
