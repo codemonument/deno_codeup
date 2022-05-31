@@ -39,6 +39,7 @@ export async function chooseValidVSCodeInstall(
 
   throw new Deno.errors.NotFound(
     `[chooseValidVSCodeInstall] No valid VSCode install location found. 
-     You can pass VSCode Install paths via cli arg, by setting VSCODE_INSTALL env var or by using it inside a valid vscode install dir`,
+     You can pass VSCode Install paths via cli arg, by setting VSCODE_INSTALL env var 
+     or by using it inside a valid vscode install dir. (ordered by priority)`,
   );
 }
