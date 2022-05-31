@@ -5,6 +5,7 @@ import {
   MAIN_COMMAND,
   PARSE_FAILURE,
   PartialOption,
+  SubCommand,
   Text,
 } from "../deps/_args.ts";
 import { log } from "../deps/_log.std.ts";
@@ -38,7 +39,8 @@ const parser = args
     describe:
       "A path to the install location of the vscode instance, which should be updated",
     default: undefined,
-  }));
+  }))
+  .sub("help", args.describe("Show help"));
 
 /**
  * @param args should normally contain Deno.args, but can also contain mocked data for testing
@@ -46,7 +48,7 @@ const parser = args
 export function parseCliArgs(args: string[]) {
   const res = parser.parse(args);
 
-  switch (res.tag as any) {
+  switch (res.tag) {
     case PARSE_FAILURE:
       console.error(res?.error?.toString());
       Deno.exit(1);
