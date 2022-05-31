@@ -1,9 +1,4 @@
-import {
-  AssertionError,
-  assertThrows,
-  describe,
-  it,
-} from "../deps/_testing.std.ts";
+import { assertThrows, describe, it } from "../deps/_testing.std.ts";
 import { log } from "../deps/_log.std.ts";
 import { parseCliArgs } from "./parse-cli-args.ts";
 

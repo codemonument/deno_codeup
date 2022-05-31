@@ -5,7 +5,6 @@ import {
   MAIN_COMMAND,
   PARSE_FAILURE,
   PartialOption,
-  SubCommand,
   Text,
 } from "../deps/_args.ts";
 import { log } from "../deps/_log.std.ts";
