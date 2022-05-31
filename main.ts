@@ -12,6 +12,15 @@ import { log } from "./src/deps/_log.std.ts";
  */
 const updateZip = "vscode-update.zip";
 const cliArgs = parseCliArgs(Deno.args);
+const installLocations = [
+  cliArgs.installLocation,
+  Deno.env.get("VSCODE_INSTALL"),
+  Deno.cwd(),
+];
+
+log.info(installLocations);
+
+Deno.exit();
 
 try {
   log.info(`Running portable-vscode-updater Version ${VERSION}`);

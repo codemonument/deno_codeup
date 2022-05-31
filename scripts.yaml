@@ -3,7 +3,16 @@ envFile:
   - .env
   
 scripts:
-  start: deno run --allow-read --allow-write --allow-net --unstable --allow-run main.ts
+  start: 
+    cmd: deno run --unstable main.ts
+    env: 
+      VSCODE_INSTALL: './playground'
+    allow:
+      env: VSCODE_INSTALL
+      read: true 
+      write: true
+      net: true 
+      run: true
   build: 
     - vr bundle 
     - vr compile
