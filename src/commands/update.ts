@@ -20,18 +20,21 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
     { type: "CWD", location: Deno.cwd() },
   );
 
+  const downloadTempDir = await Deno.makeTempDir();
   const updateZipName = "vscode-update.zip";
-  const updateZipPath = join(workingVscodeDir.location, updateZipName);
+  const updateZipPath = join(downloadTempDir, updateZipName);
 
   await cleanupUserTempDirs(workingVscodeDir);
-  await downloadVSCodeZip("archive", workingVscodeDir.location, updateZipName);
+  await downloadVSCodeZip("archive", downloadTempDir, updateZipName);
   await cleanFolder(".", {
     ignore: [
-      "data",
-      updateZipName,
+      // ignore .gitkeep for testing environment
       ".gitkeep",
+      // ignore data to keep userdata around
+      "data",
+      // ignore these two executables to avoid deleting myself when run from the same dir as vscode install
       "portable-vscode-updater.exe",
-      "wcvm.exe",
+      "codeup.exe",
     ],
   });
 
@@ -50,7 +53,7 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
    * Delete update zip
    */
   const kiaZipDelete = await startKia(`Remove ${updateZipPath}`);
-  await Deno.remove(updateZipPath);
+  await Deno.remove(downloadTempDir, { recursive: true });
   await kiaZipDelete.succeed(`Removed ${updateZipPath}`);
 
   log.info("VSCode Update finished successfully!");
