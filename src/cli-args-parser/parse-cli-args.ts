@@ -8,7 +8,7 @@ import {
   Text,
 } from "../deps/_args.ts";
 import { log } from "../deps/_log.std.ts";
-import { CliArgs } from "./cli-args.ts";
+import { CliArgs } from "./cli-args.type.ts";
 
 function showHelp(cmdPath: readonly string[] = []) {
   if (!cmdPath.length) {
