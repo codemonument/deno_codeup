@@ -1,21 +1,23 @@
 import { log } from "../deps/_log.std.ts";
-
-type ParserWithHelpFunction = { help: (...cmdPath: string[]) => void };
+import { YargsInstance } from "../deps/_yargs.ts";
 
 /**
  * Implements the help command for codeup cli
  *
  * @param parser This is the args parser instance
  */
-export function help<T extends ParserWithHelpFunction>(
-  parser: T,
-  cmdPath: readonly string[] = [],
+export function help(
+  parser: YargsInstance,
 ) {
-  if (!cmdPath.length) {
-    console.log("USAGE:");
-    console.log("  <program> help [command]");
-    console.log("  <program> install");
-    console.log("  <program> update");
-  }
-  console.log(`\n${parser.help(...cmdPath)}\n`);
+  // if (!cmdPath.length) {
+  //   console.log("USAGE:");
+  //   console.log("  <program> help [command]");
+  //   console.log("  <program> install");
+  //   console.log("  <program> update");
+  // }
+  console.log(`\n${parser.getHelp()}\n`);
+}
+
+export function attachHelpCommand(yargs: YargsInstance): YargsInstance {
+  return yargs.command("help", "Shows this help text", yargs);
 }
