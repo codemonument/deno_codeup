@@ -13,6 +13,7 @@ scripts:
       write: true
       net: true 
       run: true
+  start-update: "vr start update --installLocation ./playground"
   test: 
     cmd: deno test 
     allow: 
