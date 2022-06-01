@@ -33,11 +33,6 @@ export async function downloadVSCodeZip(
 ) {
   const kia = await startKia("Downloading vscode zip");
 
-  if (Deno.statSync(file).isFile) {
-    kia.succeed(`VSCode zip already downloaded`);
-    return;
-  }
-
   const url =
     `https://update.code.visualstudio.com/api/update/win32-x64-${packageFormat}/stable/productCommit`;
   const json: VSCodeProductResponse = await (await fetch(url)).json();
