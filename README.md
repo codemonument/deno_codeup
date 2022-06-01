@@ -1,10 +1,20 @@
-# Portable VSCode Manager
+# codeup - A Portable VSCode Manager
 
 A manager for portable vscode installation currently Windows only
 
 Language: Typescript 
 Run via: deno / as portable cli 
-Command (currently): portable-vscode-updater.exe
+Command (currently): codeup.exe
+
+## How to use 
+
+1. Install the package from deno.land/x:  
+   ```
+   deno install --allow-read --allow-write --allow-net --allow-run --allow-env --name codeup https://deno.land/x/codeup/main.ts
+   ```
+2. Enjoy codeup command! (Run `coudeup help` to get usage information)
+
+---
 
 ## Repo Structure 
 

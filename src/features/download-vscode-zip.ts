@@ -1,8 +1,8 @@
 import { download } from "https://deno.land/x/download/mod.ts";
-import { VSCodeProductResponse } from "./models/vscode-product-response.ts";
-import { startKia } from "./utils/start-kia.ts";
-import * as log from "https://deno.land/std@0.117.0/log/mod.ts";
-import { existsSync } from "https://deno.land/std@0.117.0/fs/mod.ts";
+import { VSCodeProductResponse } from "../models/vscode-product-response.ts";
+import { startKia } from "../utils/start-kia.ts";
+import { basename, dirname } from "../deps/_path.std.ts";
+import { log } from "../deps/_log.std.ts";
 
 // TODO: pass options via this interface
 // export interface DownloadVSCodeZipOptions {
@@ -10,6 +10,8 @@ import { existsSync } from "https://deno.land/std@0.117.0/fs/mod.ts";
 // }
 
 /**
+ * Returns the path to the downloaded zip file
+ *
  * Example API Paths
  * https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/productCommit
  * https://update.code.visualstudio.com/api/update/win32-x64-archive/insider/productCommit
@@ -27,20 +29,14 @@ import { existsSync } from "https://deno.land/std@0.117.0/fs/mod.ts";
  */
 export async function downloadVSCodeZip(
   packageFormat: "archive" | "user" = "archive",
-  dir = "./",
-  file = "vscode.zip",
+  filepath: string,
 ) {
   const kia = await startKia("Downloading vscode zip");
-
-  if (existsSync(file)) {
-    kia.succeed(`VSCode zip already downloaded`);
-    return;
-  }
 
   const url =
     `https://update.code.visualstudio.com/api/update/win32-x64-${packageFormat}/stable/productCommit`;
   const json: VSCodeProductResponse = await (await fetch(url)).json();
-  console.log(`VSCodeProductResponse json: `, json);
+  console.log(`\n VSCodeProductResponse json: `, json);
 
   if (!json.url || json.url.length < 1) {
     kia.fail(
@@ -49,6 +45,8 @@ export async function downloadVSCodeZip(
     Deno.exit();
   }
 
+  const dir = dirname(filepath);
+  const file = basename(filepath);
   const result = await download(json.url, { dir, file, mode: 0o777 });
   await kia.succeed(`Downloaded VSCode Zip`);
 
