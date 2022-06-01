@@ -1,9 +1,11 @@
+import { log } from "../deps/_log.std.ts";
 import { InstallArgs } from "./installArgs.type.ts";
 
 /**
  * Implements the install command for codeup cli
  */
-export async function install({}: InstallArgs) {
+export function install({}: InstallArgs) {
+  log.info("Dummy Log for install command");
 }
 
 /**
@@ -11,7 +13,9 @@ export async function install({}: InstallArgs) {
  * See: https://github.com/yargs/yargs/blob/main/docs/advanced.md#providing-a-command-module
  */
 
-export const command = "install";
-export const handler = install;
-export const describe =
-  "Installs a fresh copy of portable vscode into an empty folder";
+export const installYargsCommand = {
+  command: "install",
+  handler: install,
+  describe:
+    `WIP: Installs a fresh copy of portable vscode into an empty folder`,
+};
