@@ -8,7 +8,7 @@ scripts:
     env: 
       VSCODE_INSTALL: './playground'
     allow:
-      env: VSCODE_INSTALL
+      env: true
       read: true 
       write: true
       net: true 
