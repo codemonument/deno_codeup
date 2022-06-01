@@ -18,6 +18,6 @@ export function help(
   console.log(`\n${parser.getHelp()}\n`);
 }
 
-export function attachHelpCommand(yargs: YargsInstance): YargsInstance {
+export function registerHelpCommand(yargs: YargsInstance): YargsInstance {
   return yargs.command("help", "Shows this help text", yargs);
 }
