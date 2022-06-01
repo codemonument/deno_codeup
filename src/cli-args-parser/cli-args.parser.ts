@@ -31,7 +31,7 @@ const updateCommand = args
 const installCommand = args
   .describe(`Installs a fresh copy of portable vscode into an empty folder`);
 
-const parser = args
+export const parser = args
   .describe("A portable vscode manager cli")
   .sub("help", helpCommand)
   .sub("install", installCommand)
