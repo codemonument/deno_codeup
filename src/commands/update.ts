@@ -1,4 +1,3 @@
-import { join } from "../deps/_path.std.ts";
 import { chooseValidVSCodeInstall } from "../features/choose-valid-vscode-install.ts";
 import { cleanFolder } from "../features/clean-folder.ts";
 import { cleanupUserTempDirs } from "../features/cleanup-user-temp-dirs.ts";
@@ -8,6 +7,7 @@ import { startKia } from "../utils/start-kia.ts";
 import { UpdateArgs } from "./updateArgs.type.ts";
 import { log } from "../deps/_log.std.ts";
 import { YargsInstance } from "../deps/_yargs.ts";
+import { ensureDir } from "../deps/_fs.std.ts";
 
 /**
  * Implements the update command for codeup cli
@@ -21,6 +21,7 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
   );
 
   console.log(`Working with VSCode Folder: `, workingVscodeDir);
+  await ensureDir(workingVscodeDir.location);
 
   const updateZipName = "vscode-update.zip";
   const updateZipPath = await Deno.makeTempFile({ prefix: updateZipName });
