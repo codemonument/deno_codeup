@@ -12,7 +12,10 @@ export function help<T extends ParserWithHelpFunction>(
   cmdPath: readonly string[] = [],
 ) {
   if (!cmdPath.length) {
-    log.info(`\nUSAGE: => TODO: Output usage information!\n`);
+    console.log("USAGE:");
+    console.log("  <program> help [command]");
+    console.log("  <program> install");
+    console.log("  <program> update");
   }
   log.info(`\n${parser.help(...cmdPath)}\n`);
 }
