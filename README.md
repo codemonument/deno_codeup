@@ -6,13 +6,19 @@ Language: Typescript
 Run via: deno / as portable cli 
 Command (currently): codeup.exe
 
+Available at: 
+- Deno Main Package: https://deno.land/x/codeup
+- Deno Secondary Package (for visibility): https://deno.land/x/portable_vscode_manager (also uses codeup command)
+- Base Git Repo: <https://github.com/codemonument/portable-vscode-manager>
+
 ## How to use 
 
-1. Install the package from deno.land/x:  
+1. Install the package from deno.land/x as cli `codeup`:  
    ```
    deno install --allow-read --allow-write --allow-net --allow-run --allow-env --name codeup https://deno.land/x/codeup/main.ts
    ```
 2. Enjoy codeup command! (Run `coudeup help` to get usage information)
+3. Optional: You can change the command to anything you like by simply passing another --name instead of `codeup`
 
 ---
 
