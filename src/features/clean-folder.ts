@@ -15,7 +15,7 @@ export async function cleanFolder(
 ) {
   const path = vscodeInstall.location;
   const kia = await startKia(
-    "Delete old vscode files, but keeping user dir and new vscode zip",
+    "Delete old vscode files, but keeping user dir and new vscode zip \n",
   );
 
   for await (const entry of walk(path, { maxDepth: 1 })) {

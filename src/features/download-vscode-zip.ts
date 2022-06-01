@@ -36,7 +36,7 @@ export async function downloadVSCodeZip(
   const url =
     `https://update.code.visualstudio.com/api/update/win32-x64-${packageFormat}/stable/productCommit`;
   const json: VSCodeProductResponse = await (await fetch(url)).json();
-  console.log(`VSCodeProductResponse json: `, json);
+  console.log(`\n VSCodeProductResponse json: `, json);
 
   if (!json.url || json.url.length < 1) {
     kia.fail(
