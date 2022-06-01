@@ -7,13 +7,13 @@ import { decompress } from "../forks/zip@1.2.3/mod.ts";
 import { startKia } from "../utils/start-kia.ts";
 import { UpdateArgs } from "./updateArgs.type.ts";
 import { log } from "../deps/_log.std.ts";
+import { YargsInstance } from "../deps/_yargs.ts";
 
 /**
  * Implements the update command for codeup cli
  */
 export async function update({ safeExtract, installLocation }: UpdateArgs) {
   log.info("Updating vscode...");
-  return;
   const workingVscodeDir = await chooseValidVSCodeInstall(
     { type: "CLI_ARG", location: installLocation },
     { type: "ENV_VSCODE_INSTALL", location: Deno.env.get("VSCODE_INSTALL") },
@@ -64,6 +64,23 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
 export const updateYargsCommand = {
   command: ["update", "u"],
   handler: update,
+  builder: (yargs: YargsInstance) => {
+    return yargs
+      .boolean("safeExtract")
+      .default("safeExtract", false)
+      .alias("safeExtract", "s")
+      .describe(
+        "safeExtract",
+        `If true, do not override files while extracting the update-zip, if they exist already`,
+      )
+      .option("installLocation", {
+        alias: "i",
+        describe:
+          `[Optional] A path to the install location of the vscode instance, which should be updated. 
+          Can also be set via VSCODE_INSTALL env or by running this cli inside a vscode directory`,
+        default: undefined,
+      });
+  },
   describe:
     `Updates a given portable vscode installation to the latest version`,
 };
