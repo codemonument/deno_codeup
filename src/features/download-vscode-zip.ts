@@ -1,6 +1,7 @@
 import { download } from "https://deno.land/x/download/mod.ts";
 import { VSCodeProductResponse } from "../models/vscode-product-response.ts";
 import { startKia } from "../utils/start-kia.ts";
+import { basename, dirname } from "../deps/_path.std.ts";
 import { log } from "../deps/_log.std.ts";
 
 // TODO: pass options via this interface
@@ -28,8 +29,7 @@ import { log } from "../deps/_log.std.ts";
  */
 export async function downloadVSCodeZip(
   packageFormat: "archive" | "user" = "archive",
-  dir = "./",
-  file = "vscode.zip",
+  filepath: string,
 ) {
   const kia = await startKia("Downloading vscode zip");
 
@@ -45,6 +45,8 @@ export async function downloadVSCodeZip(
     Deno.exit();
   }
 
+  const dir = dirname(filepath);
+  const file = basename(filepath);
   const result = await download(json.url, { dir, file, mode: 0o777 });
   await kia.succeed(`Downloaded VSCode Zip`);
 
