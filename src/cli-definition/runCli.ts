@@ -9,7 +9,7 @@ import { update } from "../commands/update.ts";
 /**
  * @param args should normally contain Deno.args, but can also contain mocked data for testing
  */
-export function runCli(args: string[]): void {
+export async function runCli(args: string[]): void {
   const res = parser.parse(args);
 
   switch (res.tag) {
@@ -37,10 +37,10 @@ export function runCli(args: string[]): void {
     //   allowInstall,
     // };
     case "install":
-      install(res.value.value);
+      await install(res.value.value);
       break;
     case "update":
-      update(res.value.value);
+      await update(res.value.value);
       break;
     case "help":
     default:
