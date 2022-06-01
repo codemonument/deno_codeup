@@ -7,6 +7,7 @@ import { decompress } from "../forks/zip@1.2.3/mod.ts";
 import { startKia } from "../utils/start-kia.ts";
 import { UpdateArgs } from "./updateArgs.type.ts";
 import { log } from "../deps/_log.std.ts";
+import { YargsInstance } from "../deps/_yargs.ts";
 
 /**
  * Implements the update command for codeup cli
@@ -53,4 +54,12 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
   await kiaZipDelete.succeed(`Removed ${updateZipPath}`);
 
   log.info("VSCode Update finished successfully!");
+}
+
+export function registerUpdateCommand(yargs: YargsInstance) {
+  yargs.command();
+  yargs.command(
+    "update",
+    "Updates a given portable vscode installation to the latest version",
+  );
 }
