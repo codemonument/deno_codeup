@@ -1,4 +1,5 @@
 import { walk } from "https://deno.land/std@0.117.0/fs/mod.ts";
+import { emptyDir } from "../deps/_fs.std.ts";
 import { VSCodeInstallLocation } from "../types/vscode-install-location.ts";
 import { startKia } from "../utils/start-kia.ts";
 
@@ -20,6 +21,7 @@ export async function cleanFolder(
 
   for await (const entry of walk(path, { maxDepth: 1 })) {
     if (entry.path === ".") continue;
+    if (entry.path === "..") continue;
     if (
       ignore &&
       ignore.find((ignorePrefix) => entry.path.startsWith(ignorePrefix))
@@ -29,7 +31,7 @@ export async function cleanFolder(
     }
 
     try {
-      await Deno.remove(entry.path, { recursive: true });
+      await emptyDir(entry.path);
     } catch (error) {
       // if error is: File not found, then ignore it (since when we delete folders recursively, all following file paths in the list get invalid)
       console.log(error);
