@@ -7,13 +7,13 @@ import { decompress } from "../forks/zip@1.2.3/mod.ts";
 import { startKia } from "../utils/start-kia.ts";
 import { UpdateArgs } from "./updateArgs.type.ts";
 import { log } from "../deps/_log.std.ts";
-import { YargsInstance } from "../deps/_yargs.ts";
 
 /**
  * Implements the update command for codeup cli
  */
 export async function update({ safeExtract, installLocation }: UpdateArgs) {
   log.info("Updating vscode...");
+  return;
   const workingVscodeDir = await chooseValidVSCodeInstall(
     { type: "CLI_ARG", location: installLocation },
     { type: "ENV_VSCODE_INSTALL", location: Deno.env.get("VSCODE_INSTALL") },
@@ -56,10 +56,14 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
   log.info("VSCode Update finished successfully!");
 }
 
-export function registerUpdateCommand(yargs: YargsInstance) {
-  yargs.command();
-  yargs.command(
-    "update",
-    "Updates a given portable vscode installation to the latest version",
-  );
-}
+/**
+ * Export yargs command module
+ * See: https://github.com/yargs/yargs/blob/main/docs/advanced.md#providing-a-command-module
+ */
+
+export const updateYargsCommand = {
+  command: ["update", "u"],
+  handler: update,
+  describe:
+    `Updates a given portable vscode installation to the latest version`,
+};

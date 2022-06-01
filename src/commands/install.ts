@@ -14,7 +14,7 @@ export function install({}: InstallArgs) {
  */
 
 export const installYargsCommand = {
-  command: "install",
+  command: ["install", "i"],
   handler: install,
   describe:
     `WIP: Installs a fresh copy of portable vscode into an empty folder`,
