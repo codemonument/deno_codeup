@@ -24,7 +24,7 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
   await ensureDir(workingVscodeDir.location);
 
   const updateZipName = "vscode-update.zip";
-  const updateZipPath = await Deno.makeTempFile({ prefix: updateZipName });
+  const updateZipPath = await Deno.makeTempFile({ suffix: updateZipName });
 
   await cleanupUserTempDirs(workingVscodeDir);
   await downloadVSCodeZip("archive", updateZipPath);

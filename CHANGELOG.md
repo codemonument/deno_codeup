@@ -1,5 +1,8 @@
 # Changelog portable-vscode-updater 
 
+## 2.0.0-beta.4 - 2022-06-01
+- change temp file generation to put the update zip at the end (suffixing the random portion) to avoid problems with zip unpack
+
 ## 2.0.0-beta.3 - 2022-06-01
 - improve readme general package information and "How to use" section
 - deploy to second deno module: https://deno.land/x/portable_vscode_manager
