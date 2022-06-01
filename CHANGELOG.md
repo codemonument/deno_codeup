@@ -1,5 +1,9 @@
 # Changelog portable-vscode-updater 
 
+## 2.0.0-beta.3 - 2022-06-01
+- improve readme general package information and "How to use" section
+- deploy to second deno module: https://deno.land/x/portable_vscode_manager
+
 ## 2.0.0-beta.2 - 2022-06-01
 - regenerate description on deno.land/x
 
