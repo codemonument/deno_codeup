@@ -7,7 +7,7 @@ export * from "https://deno.land/x/yargs@v17.5.1-deno/deno-types.ts";
 import denoPlatformShim from "./_yargs.denoPlattformShim.ts";
 import { YargsFactory } from "https://deno.land/x/yargs@v17.5.1-deno/build/lib/yargs-factory.js";
 
-const yargs = YargsFactory(denoPlatformShim);
+export const yargs = YargsFactory(denoPlatformShim);
 export default yargs;
 
 /**
