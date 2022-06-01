@@ -26,7 +26,7 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
 
   await cleanupUserTempDirs(workingVscodeDir);
   await downloadVSCodeZip("archive", downloadTempDir, updateZipName);
-  await cleanFolder(".", {
+  await cleanFolder(workingVscodeDir, {
     ignore: [
       // ignore .gitkeep for testing environment
       ".gitkeep",
