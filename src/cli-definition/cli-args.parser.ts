@@ -1,4 +1,5 @@
-import { help } from "../commands/help.ts";
+import { VERSION } from "../../VERSION.ts";
+import { updateYargsCommand } from "../commands/update.ts";
 import {
   args,
   EarlyExitFlag,
@@ -6,6 +7,8 @@ import {
   PartialOption,
   Text,
 } from "../deps/_args.ts";
+import { yargs } from "../deps/_yargs.ts";
+import { installYargsCommand } from "../commands/install.ts";
 
 const helpCommand = args.describe("Shows this help text");
 
@@ -31,17 +34,13 @@ const updateCommand = args
 const installCommand = args
   .describe(`Installs a fresh copy of portable vscode into an empty folder`);
 
-export const parser = args
-  .describe("A portable vscode manager cli")
-  .sub("help", helpCommand)
-  .sub("install", installCommand)
-  .sub("update", updateCommand)
-  .with(
-    EarlyExitFlag("help", {
-      describe: "Show help",
-      exit() {
-        help(parser);
-        return Deno.exit();
-      },
-    }),
-  );
+export const parser = yargs()
+  .command(
+    "$0",
+    "Installs or Updates portable vscode installations",
+    // () => console.log("default command was called!"),
+  )
+  .command(installYargsCommand)
+  .command(updateYargsCommand)
+  .help()
+  .version(VERSION);
