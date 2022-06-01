@@ -1,14 +1,18 @@
-export * from "https://deno.land/x/yargs@v17.5.1-deno/deno.ts";
-export {
-  default,
-  default as yargs,
-} from "https://deno.land/x/yargs@v17.5.1-deno/deno.ts";
 export * from "https://deno.land/x/yargs@v17.5.1-deno/deno-types.ts";
+
+/**
+ * This is a custom denoPlatformShim to fix import errors in original:
+ * https://deno.land/x/yargs@v17.5.1-deno/deno.ts
+ */
+import denoPlatformShim from "./_yargs.denoPlattformShim.ts";
+import { YargsFactory } from "https://deno.land/x/yargs@v17.5.1-deno/build/lib/yargs-factory.js";
+
+const yargs = YargsFactory(denoPlatformShim);
+export default yargs;
 
 /**
  * Make YargsInstace type useable in my code
  */
-import yargs from "https://deno.land/x/yargs@v17.5.1-deno/deno.ts";
 export type YargsInstance = ReturnType<typeof yargs>;
 
 /**
