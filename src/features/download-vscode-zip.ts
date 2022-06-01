@@ -9,6 +9,8 @@ import { log } from "../deps/_log.std.ts";
 // }
 
 /**
+ * Returns the path to the downloaded zip file
+ *
  * Example API Paths
  * https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/productCommit
  * https://update.code.visualstudio.com/api/update/win32-x64-archive/insider/productCommit
