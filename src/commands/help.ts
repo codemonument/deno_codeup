@@ -17,5 +17,5 @@ export function help<T extends ParserWithHelpFunction>(
     console.log("  <program> install");
     console.log("  <program> update");
   }
-  log.info(`\n${parser.help(...cmdPath)}\n`);
+  console.log(`\n${parser.help(...cmdPath)}\n`);
 }
