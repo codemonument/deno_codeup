@@ -20,12 +20,13 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
     { type: "CWD", location: Deno.cwd() },
   );
 
-  const downloadTempDir = await Deno.makeTempDir();
+  console.log(`Working with VSCode Folder: `, workingVscodeDir);
+
   const updateZipName = "vscode-update.zip";
-  const updateZipPath = join(downloadTempDir, updateZipName);
+  const updateZipPath = await Deno.makeTempFile({ prefix: updateZipName });
 
   await cleanupUserTempDirs(workingVscodeDir);
-  await downloadVSCodeZip("archive", downloadTempDir, updateZipName);
+  await downloadVSCodeZip("archive", updateZipPath);
   await cleanFolder(workingVscodeDir, {
     ignore: [
       // ignore .gitkeep for testing environment
@@ -53,7 +54,7 @@ export async function update({ safeExtract, installLocation }: UpdateArgs) {
    * Delete update zip
    */
   const kiaZipDelete = await startKia(`Remove ${updateZipPath}`);
-  await Deno.remove(downloadTempDir, { recursive: true });
+  await Deno.remove(updateZipPath);
   await kiaZipDelete.succeed(`Removed ${updateZipPath}`);
 
   log.info("VSCode Update finished successfully!");
