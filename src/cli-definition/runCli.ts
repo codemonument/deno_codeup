@@ -1,8 +1,8 @@
-import { log } from "../deps/_log.std.ts";
 import { yargs } from "../deps/_yargs.ts";
 import { VERSION } from "../../VERSION.ts";
 import { updateYargsCommand } from "../commands/update.ts";
 import { installYargsCommand } from "../commands/install.ts";
+import { upgradeSelfYargsCommand } from "../commands/upgrade-self.ts";
 
 /**
  * The yargs parser instance.
@@ -16,6 +16,7 @@ export const parser = yargs()
   )
   .command(installYargsCommand)
   .command(updateYargsCommand)
+  .command(upgradeSelfYargsCommand)
   .help()
   .version(VERSION);
 

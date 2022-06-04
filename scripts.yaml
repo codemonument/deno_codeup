@@ -1,6 +1,9 @@
 # velociraptor scripts configuration
 envFile:
   - .env
+
+allow: 
+  env: true
   
 scripts:
   start: 
@@ -14,14 +17,24 @@ scripts:
       net: true 
       run: true
   start-update: "vr start update --installLocation ./playground"
+
+  upgrade-self: 
+     cmd: deno run main.ts upgrade-self
+     allow: 
+      net: 'deno.land'
+      run: 'deno'
+      read: true
+
   test: 
     cmd: deno test 
     allow: 
       read: true
       write: true
+
   build: 
     - vr bundle 
     - vr compile
+
   bundle: deno bundle --unstable main.ts dist/portable-vscode-updater.js
   compile: deno compile --unstable --target x86_64-pc-windows-msvc --allow-read --allow-write --allow-net --allow-run -o dist/${BINARY_NAME} main.ts
   install: deno install --allow-read --allow-write --allow-net --allow-run --allow-env --name ${BINARY_NAME} main.ts 
