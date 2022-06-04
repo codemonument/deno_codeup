@@ -1,5 +1,9 @@
 # Changelog portable-vscode-updater 
 
+## 2.0.0 - 2022-06-04
+
+- allow self upgrading via `codeup upgrade-self` (uses package `modup` for this)
+
 ## 2.0.0-beta.4 - 2022-06-01
 - change temp file generation to put the update zip at the end (suffixing the random portion) to avoid problems with zip unpack
 
