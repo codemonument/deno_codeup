@@ -1,5 +1,10 @@
 # Changelog portable-vscode-updater 
 
+## 2.0.1 - 2022-08-15
+
+- Improve Readme & github repo description by listing "@codemonument" in there as a keyword
+
+
 ## 2.0.0 - 2022-06-04
 
 - allow self upgrading via `codeup upgrade-self` (uses package `modup` for this)

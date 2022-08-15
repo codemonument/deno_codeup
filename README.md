@@ -1,6 +1,6 @@
 # codeup - A Portable VSCode Manager
 
-A manager for portable vscode installation currently Windows only
+A CLI tool by @codemonument named "codeup" to manage Portable VSCode installations (currently for windows only)
 
 Language: Typescript 
 Run via: deno / as portable cli 
