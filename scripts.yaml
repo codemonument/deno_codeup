@@ -37,6 +37,10 @@ scripts:
 
   bundle: deno bundle --unstable main.ts dist/portable-vscode-updater.js
   compile: deno compile --unstable --target x86_64-pc-windows-msvc --allow-read --allow-write --allow-net --allow-run -o dist/${BINARY_NAME} main.ts
-  install: deno install --allow-read --allow-write --allow-net --allow-run --allow-env --name ${BINARY_NAME} main.ts 
+  
+  # added by global allow config: 
+  # --allow-env 
+  install: deno install --allow-read --allow-write --allow-net --allow-run --name ${BINARY_NAME} main.ts 
+  
   uninstall: deno uninstall --unstable ${BINARY_NAME}
   uninstall-generic: deno uninstall --unstable portable-vscode-manager
