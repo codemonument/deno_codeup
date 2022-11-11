@@ -1,9 +1,11 @@
 # Changelog portable-vscode-updater 
 
+## 2.0.2 -2022-11-11
+
+- Check if deployment to deno.land/x still works after renaming the repo to deno_codeup
 ## 2.0.1 - 2022-08-15
 
 - Improve Readme & github repo description by listing "@codemonument" in there as a keyword
-
 
 ## 2.0.0 - 2022-06-04
 
