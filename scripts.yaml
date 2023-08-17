@@ -22,7 +22,8 @@ scripts:
      cmd: deno run main.ts upgrade-self
      allow: 
       net: 'deno.land'
-      run: 'deno'
+      # only runs deno.exe
+      run: true
       read: true
 
   test: 
