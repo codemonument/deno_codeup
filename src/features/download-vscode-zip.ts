@@ -1,8 +1,8 @@
 import { download } from "https://deno.land/x/download/mod.ts";
 import { VSCodeProductResponse } from "../models/vscode-product-response.ts";
 import { startKia } from "../utils/start-kia.ts";
-import { basename, dirname } from "../deps/_path.std.ts";
-import { log } from "../deps/_log.std.ts";
+import { basename, dirname } from "../deps/std.ts";
+import { log } from "../deps/std.ts";
 
 // TODO: pass options via this interface
 // export interface DownloadVSCodeZipOptions {

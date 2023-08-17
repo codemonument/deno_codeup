@@ -1,5 +1,5 @@
 import { walk } from "https://deno.land/std@0.117.0/fs/mod.ts";
-import { emptyDir } from "../deps/_fs.std.ts";
+import { emptyDir } from "../deps/std.ts";
 import { VSCodeInstallLocation } from "../types/vscode-install-location.ts";
 import { startKia } from "../utils/start-kia.ts";
 

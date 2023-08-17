@@ -1,5 +1,5 @@
-import { log } from "../deps/_log.std.ts";
-import { path } from "../deps/_path.std.ts";
+import { log } from "../deps/std.ts";
+import { path } from "../deps/std.ts";
 
 /**
  * @param path The path to check whether it is a vscode install folder or not.

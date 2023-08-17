@@ -1,4 +1,4 @@
-import { log } from "../deps/_log.std.ts";
+import { log } from "../deps/std.ts";
 import { InstallArgs } from "./installArgs.type.ts";
 
 /**

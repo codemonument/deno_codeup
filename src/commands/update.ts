@@ -5,9 +5,9 @@ import { downloadVSCodeZip } from "../features/download-vscode-zip.ts";
 import { decompress } from "../forks/zip@1.2.3/mod.ts";
 import { startKia } from "../utils/start-kia.ts";
 import { UpdateArgs } from "./updateArgs.type.ts";
-import { log } from "../deps/_log.std.ts";
+import { log } from "../deps/std.ts";
 import { YargsInstance } from "../deps/_yargs.ts";
-import { ensureDir } from "../deps/_fs.std.ts";
+import { ensureDir } from "../deps/std.ts";
 
 /**
  * Implements the update command for codeup cli

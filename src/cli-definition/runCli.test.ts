@@ -4,7 +4,7 @@ import {
   describe,
   it,
 } from "../deps/_testing.std.ts";
-import { log } from "../deps/_log.std.ts";
+import { log } from "../deps/std.ts";
 import { runCli } from "./runCli.ts";
 
 describe(`runCli`, () => {

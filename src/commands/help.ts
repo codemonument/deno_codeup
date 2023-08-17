@@ -1,4 +1,4 @@
-import { log } from "../deps/_log.std.ts";
+import { log } from "../deps/std.ts";
 import { YargsInstance } from "../deps/_yargs.ts";
 
 /**

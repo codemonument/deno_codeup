@@ -1,6 +1,6 @@
 import { assertEquals, describe, it } from "../deps/_testing.std.ts";
 import { isVSCodeFolder } from "./is-vscode-folder.ts";
-import { ensureFile } from "../deps/_fs.std.ts";
+import { ensureFile } from "../deps/std.ts";
 
 describe(`isVSCodeFolder`, () => {
   it(`should return false for existing folder ./dist `, async () => {

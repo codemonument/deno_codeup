@@ -1,5 +1,5 @@
 import { VERSION } from "./VERSION.ts";
-import { log } from "./src/deps/_log.std.ts";
+import { log } from "./src/deps/std.ts";
 import { runCli } from "./src/cli-definition/runCli.ts";
 
 try {

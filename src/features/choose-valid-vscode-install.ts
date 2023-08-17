@@ -2,7 +2,7 @@ import {
   IncompleteVSCodeInstallLocation,
   VSCodeInstallLocation,
 } from "../types/vscode-install-location.ts";
-import { resolve } from "../deps/_path.std.ts";
+import { resolve } from "../deps/std.ts";
 import { isVSCodeFolder } from "../utils/is-vscode-folder.ts";
 
 function isString(input?: string): input is string {
