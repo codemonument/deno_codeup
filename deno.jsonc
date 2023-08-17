@@ -1,0 +1,6 @@
+{
+  "lock": false,
+  "tasks": {
+    "start": "export VSCODE_INSTALL=./playground && deno run -A main.ts"
+  }
+}
