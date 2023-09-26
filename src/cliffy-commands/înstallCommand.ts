@@ -6,9 +6,10 @@ function commandAction(_rawOptions: any, ...args: any[]) {
 }
 
 export const installCommand = new Command()
-  //   .option()
-  //   .arguments()
+  .alias("i")
   .description(
     `WIP: Installs a fresh copy of portable vscode into an empty folder`
   )
+  //   .option()
+  //   .arguments()
   .action(commandAction);

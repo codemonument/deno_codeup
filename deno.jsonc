@@ -2,7 +2,10 @@
   "lock": false,
   "tasks": {
     "start": "VSCODE_INSTALL=./playground deno run -A main.ts",
+    "start-help": "deno task start help",
+    "start-help-flag": "deno task start --help",
     "start-update": "deno task start update",
+    "start-update-help": "deno task start update --help",
     "start-install": "deno task start install",
     "start-upgrade": "deno task start upgrade",
 
