@@ -1,6 +1,11 @@
 # Changelog portable-vscode-updater 
 
-## 2.0.2 -2022-11-11
+## 2.1.0 - 2023-09-26 
+
+- Fix URL for downloading vscode packages 
+- Switch from yargs to cliffy (functionality should be equivalent currently)
+
+## 2.0.2 - 2022-11-11
 
 - Check if deployment to deno.land/x still works after renaming the repo to deno_codeup
 ## 2.0.1 - 2022-08-15
