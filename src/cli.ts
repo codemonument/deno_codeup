@@ -2,6 +2,7 @@ import { Command } from "./deps/cliffy.ts";
 import { VERSION } from "../VERSION.ts";
 import { mainCommand } from "./cliffy-commands/mainCommand.ts";
 import { installCommand } from "./cliffy-commands/înstallCommand.ts";
+import { updateCommand } from "./cliffy-commands/updateCommand.ts";
 
 /**
  * Defines the command hierarchy with options and args which should be available in this cli.
@@ -24,7 +25,8 @@ export async function runCli(denoArgs: string[]) {
     // })
     // .arguments("[domain]")
     .action(mainCommand)
-    .command("install", installCommand);
+    .command("install", installCommand)
+    .command("update", updateCommand);
 
   const { options, cmd } = await cli.parse(denoArgs);
 }
