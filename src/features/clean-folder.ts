@@ -1,5 +1,4 @@
-import { walk } from "https://deno.land/std@0.117.0/fs/mod.ts";
-import { emptyDir } from "../deps/std.ts";
+import { emptyDir, walk } from "../deps/std.ts";
 import { VSCodeInstallLocation } from "../types/vscode-install-location.ts";
 import { startKia } from "../utils/start-kia.ts";
 
@@ -12,11 +11,11 @@ export interface CleanFolderOptions {
 
 export async function cleanFolder(
   vscodeInstall: VSCodeInstallLocation,
-  { ignore }: CleanFolderOptions,
+  { ignore }: CleanFolderOptions
 ) {
   const path = vscodeInstall.location;
   const kia = await startKia(
-    "Delete old vscode files, but keeping user dir and new vscode zip",
+    "Delete old vscode files, but keeping user dir and new vscode zip"
   );
 
   for await (const entry of walk(path, { maxDepth: 1 })) {
