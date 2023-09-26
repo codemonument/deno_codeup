@@ -1,5 +1,9 @@
 # Changelog portable-vscode-updater 
 
+## next 
+
+- remove old usage of deno std 0.117.0
+
 ## 2.1.0 - 2023-09-26 
 
 - Fix URL for downloading vscode packages 
