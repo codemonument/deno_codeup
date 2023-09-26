@@ -1,5 +1,4 @@
 import { log } from "../deps/std.ts";
-import { InstallArgs } from "./installArgs.type.ts";
 
 /**
  * Implements the install command for codeup cli
@@ -16,6 +15,5 @@ export function install({}: InstallArgs) {
 export const installYargsCommand = {
   command: ["install", "i"],
   handler: install,
-  describe:
-    `WIP: Installs a fresh copy of portable vscode into an empty folder`,
+  describe: `WIP: Installs a fresh copy of portable vscode into an empty folder`,
 };

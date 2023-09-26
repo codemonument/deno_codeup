@@ -3,7 +3,8 @@
   "tasks": {
     "start": "VSCODE_INSTALL=./playground deno run -A main.ts",
     "start-update": "deno task start update",
-    "upgrade": "deno task start upgrade",
+    "start-install": "deno task start install",
+    "start-upgrade": "deno task start upgrade",
     "test": "deno test -A"
   }
 }

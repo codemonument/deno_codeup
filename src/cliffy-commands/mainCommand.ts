@@ -1,3 +1,5 @@
+import { log } from "../deps/std.ts";
+
 /**
  * This is the default command function.
  * Will be run when no explicit command is given.
@@ -6,6 +8,6 @@
  */
 
 export async function mainCommand(_rawOptions: any, ...args: any[]) {
-  console.log(`main function called`, { _rawOptions, args });
-  console.info(`interactive vscode install/update is work in progress!`);
+  log(`main function called`, { _rawOptions, args });
+  log.info(`interactive vscode install/update is work in progress!`);
 }
