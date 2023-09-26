@@ -8,6 +8,6 @@ import { log } from "../deps/std.ts";
  */
 
 export async function mainCommand(_rawOptions: any, ...args: any[]) {
-  log(`main function called`, { _rawOptions, args });
+  log.info(`main function called`, { _rawOptions, args });
   log.info(`interactive vscode install/update is work in progress!`);
 }
