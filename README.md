@@ -17,8 +17,16 @@ Available at:
    ```
    deno install --allow-read --allow-write --allow-net --allow-run --allow-env --name codeup https://deno.land/x/codeup/main.ts
    ```
-2. Enjoy codeup command! (Run `coudeup help` to get usage information)
+2. Enjoy codeup command! (Run `codeup help` to get usage information)
 3. Optional: You can change the command to anything you like by simply passing another --name instead of `codeup`
+
+## VSCode install location detection 
+
+- Auto-detect vscode install for updating: 
+    1. Search --installLocation option passed to the executable 
+       (currently only available for the 'update' command)
+    2. Search in current working dir for a vscode install
+    3. Search in env var VSCODE_INSTALL and update the vscode install found at that location 
 
 ---
 
@@ -28,14 +36,15 @@ Available at:
 - main.ts - contains the main entrypoint for this script 
 - playground - the current working directory for trying this script
 
-## VSCode Update API 
+## VSCode Download API 
 
-The update api for vscode has the following endpoints (inclomplete): 
+The vscode update api at `https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/productCommit`
+seems broken for some time now. 
+Therefore the vscode zip will be downloaded from the following url: 
 
-- stable, zip/archive variant
-https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/productCommit
+- stable, win32 x64 zip/archive variant
+https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive
 
-- stable windows install in user directory
 
 ## Additional info
 
@@ -48,10 +57,7 @@ https://github.com/microsoft/vscode/blob/640fa1af29d47b4d4fa09ff9b7c12521679ef63
 available versions of vscode: 
 https://code.visualstudio.com/Download
 
-## TODOs
 
-- Auto-detect vscode install for updating: 
-    1. Search arguments passed to the executable
-    2. Search in current working dir 
-    3. Add an env var VSCODE_INSTALL reading and update the install found at that location 
+
+
 

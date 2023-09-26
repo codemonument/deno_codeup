@@ -12,9 +12,8 @@ import { log } from "../deps/std.ts";
 /**
  * Returns the path to the downloaded zip file
  *
- * Example API Paths
- * https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/productCommit
- * https://update.code.visualstudio.com/api/update/win32-x64-archive/insider/productCommit
+ * Example API Path
+ * https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive
  *
  * Arches:
  * - x64
