@@ -7,4 +7,5 @@
 
 export async function mainCommand(_rawOptions: any, ...args: any[]) {
   console.log(`main function called`, { _rawOptions, args });
+  console.info(`interactive vscode install/update is work in progress!`);
 }
