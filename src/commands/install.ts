@@ -3,7 +3,7 @@ import { log } from "../deps/std.ts";
 /**
  * Implements the install command for codeup cli
  */
-export function install({}: InstallArgs) {
+export function install() {
   log.info("Dummy Log for install command");
 }
 
