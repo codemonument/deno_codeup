@@ -1,7 +1,7 @@
 import { download } from "https://deno.land/x/download/mod.ts";
 import { VSCodeProductResponse } from "../models/vscode-product-response.ts";
 import { startKia } from "../utils/start-kia.ts";
-import { basename, dirname } from "../deps/std.ts";
+import { path } from "../deps/std.ts";
 import { log } from "../deps/std.ts";
 
 // TODO: pass options via this interface
@@ -29,24 +29,23 @@ import { log } from "../deps/std.ts";
  */
 export async function downloadVSCodeZip(
   packageFormat: "archive" | "user" = "archive",
-  filepath: string,
+  filepath: string
 ) {
   const kia = await startKia("Downloading vscode zip");
 
-  const url =
-    `https://update.code.visualstudio.com/api/update/win32-x64-${packageFormat}/stable/productCommit`;
+  const url = `https://update.code.visualstudio.com/api/update/win32-x64-${packageFormat}/stable/productCommit`;
   const json: VSCodeProductResponse = await (await fetch(url)).json();
   console.log(`\n VSCodeProductResponse json: `, json);
 
   if (!json.url || json.url.length < 1) {
     kia.fail(
-      `No download url available in json response from update.code.visualstudio.com`,
+      `No download url available in json response from update.code.visualstudio.com`
     );
     Deno.exit();
   }
 
-  const dir = dirname(filepath);
-  const file = basename(filepath);
+  const dir = path.dirname(filepath);
+  const file = path.basename(filepath);
   const result = await download(json.url, { dir, file, mode: 0o777 });
   await kia.succeed(`Downloaded VSCode Zip`);
 
