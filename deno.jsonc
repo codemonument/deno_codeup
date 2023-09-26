@@ -5,6 +5,9 @@
     "start-update": "deno task start update",
     "start-install": "deno task start install",
     "start-upgrade": "deno task start upgrade",
+
+    // Run the update command from this repo on the real configuration!
+    "real-update": "deno run -A main.ts update",
     "test": "deno test -A"
   }
 }
