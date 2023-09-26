@@ -1,6 +1,6 @@
 import { VERSION } from "./VERSION.ts";
 import { log } from "./src/deps/std.ts";
-import { runCli } from "./src/cli-definition/runCli.ts";
+import { runCli } from "./src/cli.ts";
 
 /**
  * IMPORTANT: DO NOT RENAME THIS FILE!

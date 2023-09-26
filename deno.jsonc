@@ -1,6 +1,7 @@
 {
   "lock": false,
   "tasks": {
+    "start": "VSCODE_INSTALL=./playground deno run -A main.ts",
     "install-vr": "deno install -qAn vr https://deno.land/x/velociraptor@1.5.0/cli.ts"
   }
 }
