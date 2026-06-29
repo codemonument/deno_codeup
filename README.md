@@ -6,6 +6,8 @@ Language: Typescript
 Run via: deno / as portable cli 
 Command (currently): codeup.exe
 
+> Note: this repository intentionally does not need Varlock or `jb-dev-env` treatment. The checked-in `.env` only defines the non-secret build command name for legacy Velociraptor scripts.
+
 Available at: 
 - Deno Main Package: https://deno.land/x/codeup
 - Deno Secondary Package (for visibility): https://deno.land/x/portable_vscode_manager (also uses codeup command)
